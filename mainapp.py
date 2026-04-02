@@ -11,7 +11,14 @@ if not os.path.exists('uploads'):
     os.makedirs('uploads')
 
 # Gemini API sozlamasi
-genai.configure(api_key="")
+# Streamlit secrets orqali kalitni o'qish
+if "GEMINI_API_KEY" in st.secrets:
+    api_key = st.secrets["GEMINI_API_KEY"]
+else:
+    api_key = st.sidebar.text_input("Gemini API Keyni kiriting:", type="password")
+
+if api_key:
+    genai.configure(api_key=api_key)
 model = genai.GenerativeModel('gemini-2.5-flash') # Tavsiya etilgan stabil model
 
 def get_connection():

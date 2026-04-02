@@ -1,2 +1,2 @@
-# EDU-CECK-AI
+# EDU-CHECK-AI
 hackathon
